@@ -43,7 +43,7 @@ const projects = [
   },
   {
     title: 'Finance Tracker',
-    description: 'Personal finance dashboard with expense categorisation, monthly reports, and budget goal tracking.',
+    description: 'Personal finance dashboard with expense categorization, monthly reports, and budget goal tracking.',
     tech: ['Vue.js', 'Express', 'D3.js', 'MySQL'],
     emoji: '💰',
     demo: '#',
