@@ -1,0 +1,4 @@
+/* App-level styles */
+main {
+  padding-top: 64px; /* offset for fixed header */
+}
