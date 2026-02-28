@@ -134,7 +134,12 @@ export default function About() {
           <div className="about-avatar" aria-hidden="true">
             <div className="avatar-ring">
               <div className="avatar-inner">
-                <span className="avatar-initials">DB</span>
+                {/* Replace the src below with your real photo path, e.g. "/your-photo.jpg" placed in the public/ folder */}
+                <img
+                  src="https://ui-avatars.com/api/?name=Deepak+Bangwal&size=240&background=6366f1&color=fff&bold=true&font-size=0.4"
+                  alt="Deepak Bangwal"
+                  className="avatar-img"
+                />
               </div>
             </div>
             <div className="avatar-float avatar-float-1">⚛️</div>
