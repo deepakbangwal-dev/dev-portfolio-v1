@@ -131,14 +131,18 @@ export default function Contact() {
                 <span className="form-success-icon">🎉</span>
                 <h3>Message Sent!</h3>
                 <p>Thanks for reaching out. I'll get back to you soon.</p>
-                <button className="btn btn-primary" onClick={() => { setSubmitted(false); setForm({ name: '', email: '', subject: '', message: '' }); setErrors({}) }}>
+                <button className="btn btn-primary" onClick={() => {
+                  setSubmitted(false)
+                  setForm({ name: '', email: '', subject: '', message: '' })
+                  setErrors({})
+                }}>
                   Send Another
                 </button>
               </div>
             ) : (
               <form className="contact-form" onSubmit={handleSubmit} noValidate>
                 <div className="form-group">
-                  <label htmlFor="name">Your Name <span className="required">*</span></label>
+                  <label htmlFor="name">Your Name <span className="required" aria-hidden="true">*</span></label>
                   <input
                     type="text"
                     id="name"
@@ -147,12 +151,13 @@ export default function Contact() {
                     value={form.name}
                     onChange={handleChange}
                     className={errors.name ? 'input-error' : ''}
+                    aria-required="true"
                     required
                   />
-                  {errors.name && <span className="field-error">{errors.name}</span>}
+                  {errors.name && <span className="field-error" role="alert">{errors.name}</span>}
                 </div>
                 <div className="form-group">
-                  <label htmlFor="email">Email Address <span className="required">*</span></label>
+                  <label htmlFor="email">Email Address <span className="required" aria-hidden="true">*</span></label>
                   <input
                     type="email"
                     id="email"
@@ -161,12 +166,13 @@ export default function Contact() {
                     value={form.email}
                     onChange={handleChange}
                     className={errors.email ? 'input-error' : ''}
+                    aria-required="true"
                     required
                   />
-                  {errors.email && <span className="field-error">{errors.email}</span>}
+                  {errors.email && <span className="field-error" role="alert">{errors.email}</span>}
                 </div>
                 <div className="form-group">
-                  <label htmlFor="subject">Subject <span className="required">*</span></label>
+                  <label htmlFor="subject">Subject <span className="required" aria-hidden="true">*</span></label>
                   <input
                     type="text"
                     id="subject"
@@ -175,12 +181,13 @@ export default function Contact() {
                     value={form.subject}
                     onChange={handleChange}
                     className={errors.subject ? 'input-error' : ''}
+                    aria-required="true"
                     required
                   />
-                  {errors.subject && <span className="field-error">{errors.subject}</span>}
+                  {errors.subject && <span className="field-error" role="alert">{errors.subject}</span>}
                 </div>
                 <div className="form-group">
-                  <label htmlFor="message">Message <span className="required">*</span></label>
+                  <label htmlFor="message">Message <span className="required" aria-hidden="true">*</span></label>
                   <textarea
                     id="message"
                     name="message"
@@ -189,9 +196,10 @@ export default function Contact() {
                     value={form.message}
                     onChange={handleChange}
                     className={errors.message ? 'input-error' : ''}
+                    aria-required="true"
                     required
                   />
-                  {errors.message && <span className="field-error">{errors.message}</span>}
+                  {errors.message && <span className="field-error" role="alert">{errors.message}</span>}
                 </div>
                 <button type="submit" className="btn btn-primary form-submit">
                   Send Message
