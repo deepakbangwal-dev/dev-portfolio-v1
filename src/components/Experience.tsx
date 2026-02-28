@@ -31,18 +31,26 @@ export default function Experience() {
   return (
     <section id="experience" className="experience-section">
       <div className="container">
-        <h2 className="section-title">Work <span>Experience</span></h2>
-        <p className="section-subtitle">My professional journey so far</p>
+        <div className="reveal">
+          <div className="section-label">💼 Career</div>
+          <h2 className="section-title">Work <span>Experience</span></h2>
+          <p className="section-subtitle">My professional journey so far</p>
+        </div>
         <div className="timeline">
           {experiences.map((exp, i) => (
-            <div key={i} className="timeline-item">
-              <div className="timeline-dot" />
+            <div key={i} className={`timeline-item reveal reveal-delay-${(i % 3) + 1}`}>
+              <div className="timeline-marker">
+                <div className="timeline-dot" />
+                <div className="timeline-line" />
+              </div>
               <div className="timeline-content">
                 <div className="exp-header">
-                  <h3 className="exp-role">{exp.role}</h3>
+                  <div>
+                    <h3 className="exp-role">{exp.role}</h3>
+                    <p className="exp-company">{exp.company}</p>
+                  </div>
                   <span className="exp-period">{exp.period}</span>
                 </div>
-                <p className="exp-company">{exp.company}</p>
                 <p className="exp-desc">{exp.description}</p>
                 <div className="exp-tech">
                   {exp.tech.map(t => (

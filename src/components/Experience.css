@@ -3,53 +3,63 @@
 }
 
 .timeline {
-  position: relative;
-  padding-left: 2.5rem;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 8px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
 }
 
 .timeline-item {
-  position: relative;
-  margin-bottom: 2.5rem;
+  display: flex;
+  gap: 1.5rem;
 }
 
-.timeline-item:last-child {
-  margin-bottom: 0;
+.timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  padding-top: 4px;
 }
 
 .timeline-dot {
-  position: absolute;
-  left: -2.5rem;
-  top: 8px;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--gradient);
   border: 3px solid var(--bg);
   box-shadow: 0 0 0 2px var(--accent);
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.timeline-line {
+  width: 2px;
+  flex: 1;
+  background: linear-gradient(to bottom, var(--accent), color-mix(in srgb, var(--accent) 20%, transparent));
+  margin-top: 4px;
+  min-height: 20px;
+  border-radius: 2px;
+}
+
+.timeline-item:last-child .timeline-line {
+  display: none;
 }
 
 .timeline-content {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 14px 14px 0;
+  padding: 1.5rem 1.75rem;
   box-shadow: var(--shadow);
-  transition: transform 0.25s, box-shadow 0.25s;
+  flex: 1;
+  transition: transform 0.25s, box-shadow 0.25s, border-left-color 0.25s;
 }
 
 .timeline-content:hover {
-  transform: translateX(4px);
+  transform: translateX(5px);
   box-shadow: var(--shadow-lg);
+  border-left-color: var(--accent-2);
 }
 
 .exp-header {
@@ -57,7 +67,7 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.75rem;
   flex-wrap: wrap;
 }
 
@@ -65,30 +75,32 @@
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--text);
-}
-
-.exp-period {
-  font-size: 0.85rem;
-  color: var(--accent);
-  font-weight: 600;
-  white-space: nowrap;
-  background: color-mix(in srgb, var(--accent) 10%, transparent);
-  padding: 0.2rem 0.6rem;
-  border-radius: 20px;
+  margin-bottom: 0.2rem;
 }
 
 .exp-company {
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 500;
-  margin-bottom: 0.75rem;
+}
+
+.exp-period {
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  flex-shrink: 0;
 }
 
 .exp-desc {
   color: var(--text-secondary);
   font-size: 0.95rem;
-  line-height: 1.7;
-  margin-bottom: 1rem;
+  line-height: 1.75;
+  margin: 0.75rem 0 1rem;
 }
 
 .exp-tech {
@@ -98,10 +110,43 @@
 }
 
 .exp-tech-tag {
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
   color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
   border-radius: 6px;
-  padding: 0.2rem 0.6rem;
+  padding: 0.2rem 0.65rem;
   font-size: 0.8rem;
   font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.exp-tech-tag:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .timeline-item {
+    flex-direction: column;
+    gap: 0;
+  }
+  .timeline-marker {
+    flex-direction: row;
+    padding-top: 0;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .timeline-line {
+    width: auto;
+    flex: 1;
+    height: 2px;
+    min-height: auto;
+    margin-top: 0;
+    background: linear-gradient(to right, var(--accent), transparent);
+  }
+  .timeline-content {
+    border-left-width: 1px;
+    border-top: 3px solid var(--accent);
+    border-radius: 0 0 14px 14px;
+  }
 }
