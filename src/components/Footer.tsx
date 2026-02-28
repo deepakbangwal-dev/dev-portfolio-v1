@@ -6,7 +6,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
   return (
     <footer className="site-footer">
-      <div className="container footer-inner">
+      <div className="footer-inner">
         <div className="footer-brand">
           <a href="#about" className="footer-logo">
             <span className="footer-logo-text">Deepak</span>{' '}
