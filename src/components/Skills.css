@@ -4,19 +4,21 @@
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
 }
 
 .skill-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: 16px;
   padding: 0 1.5rem 1.5rem;
   box-shadow: var(--shadow);
-  transition: transform 0.25s, box-shadow 0.25s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
   overflow: hidden;
   position: relative;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .skill-card-top {
@@ -24,11 +26,17 @@
   background: var(--card-accent, var(--accent));
   margin: 0 -1.5rem 1.5rem;
   border-radius: 4px 4px 0 0;
+  transition: height 0.3s;
 }
 
 .skill-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
+  border-color: var(--card-accent, var(--accent));
+}
+
+.skill-card:hover .skill-card-top {
+  height: 6px;
 }
 
 .skill-card-header {
@@ -45,8 +53,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: color-mix(in srgb, var(--card-accent, var(--accent)) 12%, transparent);
+  background: color-mix(in srgb, var(--card-accent, var(--accent)) 15%, transparent);
   border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--card-accent, var(--accent)) 25%, transparent);
 }
 
 .skill-card-header h3 {
@@ -62,23 +71,33 @@
 }
 
 .skill-tag {
-  background: var(--bg-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: color-mix(in srgb, var(--card-accent, var(--accent)) 8%, transparent);
   color: var(--text-secondary);
-  border: 1px solid var(--border);
+  border: 1px solid color-mix(in srgb, var(--card-accent, var(--accent)) 20%, transparent);
   border-radius: 6px;
-  padding: 0.28rem 0.7rem;
-  font-size: 0.82rem;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.8rem;
   font-weight: 500;
   transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
   cursor: default;
 }
 
-.skill-card:hover .skill-tag {
-  background: color-mix(in srgb, var(--card-accent, var(--accent)) 10%, transparent);
+.skill-tag i {
+  font-size: 0.85rem;
   color: var(--card-accent, var(--accent));
-  border-color: color-mix(in srgb, var(--card-accent, var(--accent)) 30%, transparent);
+  transition: color 0.2s;
+}
+
+.skill-card:hover .skill-tag {
+  background: color-mix(in srgb, var(--card-accent, var(--accent)) 12%, transparent);
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--card-accent, var(--accent)) 35%, transparent);
 }
 
 .skill-tag:hover {
   transform: scale(1.05);
+  color: var(--card-accent, var(--accent));
 }

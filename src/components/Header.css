@@ -13,8 +13,8 @@
 }
 
 .site-header.scrolled {
-  border-bottom-color: var(--border);
-  box-shadow: 0 1px 20px rgba(0,0,0,0.07);
+  border-bottom-color: var(--glass-border);
+  box-shadow: 0 1px 24px rgba(0,0,0,0.12);
 }
 
 .header-inner {
@@ -25,7 +25,7 @@
 }
 
 .logo {
-  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-family: 'Space Grotesk', 'Poppins', sans-serif;
   font-size: 1.35rem;
   font-weight: 800;
   color: var(--text);
@@ -67,8 +67,8 @@
 }
 
 .theme-toggle {
-  background: none;
-  border: 1px solid var(--border);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: 10px;
   cursor: pointer;
   font-size: 1.1rem;
@@ -76,10 +76,13 @@
   line-height: 1;
   transition: border-color 0.2s, background 0.2s, transform 0.2s;
   color: inherit;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .theme-toggle:hover {
-  background: var(--bg-secondary);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border-color: var(--accent);
   transform: rotate(12deg) scale(1.1);
 }
 
@@ -113,10 +116,12 @@
     right: 0;
     flex-direction: column;
     gap: 0;
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
-    padding: 0.75rem 0.75rem;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    background: var(--nav-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 0.75rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
   }
 
   .nav.open {

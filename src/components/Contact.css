@@ -25,18 +25,20 @@
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  background: var(--card-bg);
-  border: 1px solid var(--border);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: 14px;
   padding: 1.1rem 1.25rem;
   color: var(--text);
   text-decoration: none;
   box-shadow: var(--shadow);
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
 }
 
 .contact-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
   border-color: var(--accent);
   color: var(--text);
@@ -48,10 +50,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
   color: var(--accent);
   border-radius: 12px;
   flex-shrink: 0;
+  font-size: 1.1rem;
 }
 
 .contact-label {
@@ -70,13 +73,17 @@
   word-break: break-all;
 }
 
-/* Form column */
+.contact-card-static {
+  cursor: default;
+}
 .contact-form-wrapper {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: 20px;
   padding: 2rem;
   box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .contact-form {
@@ -99,8 +106,8 @@
 
 .form-group input,
 .form-group textarea {
-  background: var(--bg-secondary);
-  border: 1.5px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 60%, transparent);
+  border: 1.5px solid var(--glass-border);
   border-radius: 10px;
   padding: 0.75rem 1rem;
   font-size: 0.95rem;

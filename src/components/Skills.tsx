@@ -5,25 +5,50 @@ const skillGroups = [
     category: 'Frontend',
     icon: '🖥️',
     color: '#6366f1',
-    skills: ['React', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS'],
+    skills: [
+      { name: 'React', icon: 'fab fa-react' },
+      { name: 'TypeScript', icon: 'fab fa-js' },
+      { name: 'JavaScript', icon: 'fab fa-js-square' },
+      { name: 'HTML5', icon: 'fab fa-html5' },
+      { name: 'CSS3', icon: 'fab fa-css3-alt' },
+      { name: 'Tailwind CSS', icon: 'fas fa-wind' },
+    ],
   },
   {
     category: 'Backend',
     icon: '⚙️',
     color: '#8b5cf6',
-    skills: ['Node.js', 'Express', 'Python', 'REST APIs', 'GraphQL'],
+    skills: [
+      { name: 'Node.js', icon: 'fab fa-node-js' },
+      { name: 'Express', icon: 'fas fa-server' },
+      { name: 'Python', icon: 'fab fa-python' },
+      { name: 'REST APIs', icon: 'fas fa-plug' },
+      { name: 'GraphQL', icon: 'fas fa-project-diagram' },
+    ],
   },
   {
     category: 'Database',
     icon: '🗄️',
     color: '#ec4899',
-    skills: ['PostgreSQL', 'MongoDB', 'Redis', 'MySQL'],
+    skills: [
+      { name: 'PostgreSQL', icon: 'fas fa-database' },
+      { name: 'MongoDB', icon: 'fas fa-leaf' },
+      { name: 'Redis', icon: 'fas fa-memory' },
+      { name: 'MySQL', icon: 'fas fa-database' },
+    ],
   },
   {
     category: 'DevOps & Tools',
     icon: '🛠️',
     color: '#06b6d4',
-    skills: ['Git', 'Docker', 'GitHub Actions', 'Linux', 'Vite', 'Webpack'],
+    skills: [
+      { name: 'Git', icon: 'fab fa-git-alt' },
+      { name: 'Docker', icon: 'fab fa-docker' },
+      { name: 'GitHub Actions', icon: 'fab fa-github' },
+      { name: 'Linux', icon: 'fab fa-linux' },
+      { name: 'AWS', icon: 'fab fa-aws' },
+      { name: 'Vite', icon: 'fas fa-bolt' },
+    ],
   },
 ]
 
@@ -50,7 +75,10 @@ export default function Skills() {
               </div>
               <div className="skill-tags">
                 {group.skills.map(skill => (
-                  <span key={skill} className="skill-tag">{skill}</span>
+                  <span key={skill.name} className="skill-tag">
+                    <i className={skill.icon} />
+                    {skill.name}
+                  </span>
                 ))}
               </div>
             </div>

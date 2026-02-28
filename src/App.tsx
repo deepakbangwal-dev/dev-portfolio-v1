@@ -18,9 +18,10 @@ function useScrollReveal() {
           }
         })
       },
-      { threshold: 0.12 }
+      { threshold: 0.1 }
     )
-    const els = document.querySelectorAll('.reveal')
+    const selectors = '.reveal, .slide-in-left, .slide-in-right'
+    const els = document.querySelectorAll(selectors)
     els.forEach(el => observer.observe(el))
     return () => observer.disconnect()
   }, [])
@@ -30,7 +31,7 @@ function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     const stored = localStorage.getItem('theme')
     if (stored === 'dark' || stored === 'light') return stored
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    return 'dark'
   })
 
   useEffect(() => {
