@@ -166,6 +166,20 @@
   .contact-layout {
     grid-template-columns: 1fr;
   }
+
+  .contact-info {
+    order: 2;
+  }
+
+  .contact-form-wrapper {
+    order: 1;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .contact-layout {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /* Validation styles */

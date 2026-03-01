@@ -113,15 +113,7 @@ export default function Contact() {
                 <p className="contact-value">+91 XXXXX XXXXX</p>
               </div>
             </div>
-            <div className="contact-card contact-card-static">
-              <span className="contact-icon">
-                <i className="fas fa-map-marker-alt" style={{ color: '#06b6d4' }} />
-              </span>
-              <div>
-                <p className="contact-label">Location</p>
-                <p className="contact-value">India</p>
-              </div>
-            </div>
+
           </div>
 
           {/* Contact form */}
