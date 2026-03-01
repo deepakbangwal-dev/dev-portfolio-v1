@@ -17,14 +17,6 @@ const experiences = [
       'Built and maintained multiple client-facing web applications from scratch. Collaborated in an agile team of 8 engineers. Integrated third-party payment gateways and authentication systems.',
     tech: ['Vue.js', 'Express', 'MongoDB', 'AWS'],
   },
-  {
-    role: 'Frontend Developer',
-    company: 'StartUp Studio',
-    period: 'Mar 2020 – May 2021',
-    description:
-      'Developed responsive UIs and component libraries. Worked closely with designers to translate Figma prototypes into production-ready code. Wrote unit and integration tests using Jest and React Testing Library.',
-    tech: ['React', 'TypeScript', 'CSS Modules', 'Jest'],
-  },
 ]
 
 export default function Experience() {

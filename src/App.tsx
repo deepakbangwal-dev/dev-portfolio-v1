@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import Header from './components/Header'
 import About from './components/About'
 import Skills from './components/Skills'
@@ -27,6 +27,33 @@ function useScrollReveal() {
   }, [])
 }
 
+function useCursorGlow() {
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    const glow = document.getElementById('cursor-glow')
+    if (glow) {
+      glow.style.left = `${e.clientX}px`
+      glow.style.top = `${e.clientY}px`
+      glow.style.opacity = '1'
+    }
+  }, [])
+
+  const handleMouseLeave = useCallback(() => {
+    const glow = document.getElementById('cursor-glow')
+    if (glow) {
+      glow.style.opacity = '0'
+    }
+  }, [])
+
+  useEffect(() => {
+    document.addEventListener('mousemove', handleMouseMove)
+    document.addEventListener('mouseleave', handleMouseLeave)
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('mouseleave', handleMouseLeave)
+    }
+  }, [handleMouseMove, handleMouseLeave])
+}
+
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     const stored = localStorage.getItem('theme')
@@ -40,11 +67,13 @@ function App() {
   }, [theme])
 
   useScrollReveal()
+  useCursorGlow()
 
   const toggleTheme = () => setTheme(t => t === 'light' ? 'dark' : 'light')
 
   return (
     <>
+      <div id="cursor-glow" className="cursor-glow" />
       <Header theme={theme} toggleTheme={toggleTheme} />
       <main>
         <About />
