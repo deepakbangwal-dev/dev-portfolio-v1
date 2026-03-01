@@ -113,7 +113,6 @@ export default function Contact() {
                 <p className="contact-value">+91 XXXXX XXXXX</p>
               </div>
             </div>
-
           </div>
 
           {/* Contact form */}
