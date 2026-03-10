@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import './Projects.css'
 
 const MAX_VISIBLE_TAGS = 5
@@ -140,11 +140,34 @@ const projects = [
 ]
 
 export default function Projects() {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
+  const [activeTooltip, setActiveTooltip] = useState<number | null>(null)
+  const tooltipRef = useRef<HTMLDivElement | null>(null)
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
 
-  const toggleExpand = (index: number) => {
-    setExpandedIndex(expandedIndex === index ? null : index)
-  }
+  const closeTooltip = useCallback(() => {
+    setActiveTooltip(null)
+  }, [])
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        tooltipRef.current &&
+        !tooltipRef.current.contains(e.target as Node) &&
+        !cardRefs.current.some(ref => ref?.contains(e.target as Node))
+      ) {
+        closeTooltip()
+      }
+    }
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeTooltip()
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('keydown', handleEscape)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [closeTooltip])
 
   return (
     <section id="projects" className="projects-section">
@@ -155,46 +178,61 @@ export default function Projects() {
           <p className="section-subtitle">Real-world projects I've built and delivered</p>
         </div>
         <div className="projects-grid">
-          {projects.map((project, i) => {
-            const isExpanded = expandedIndex === i
-            return (
-              <div
-                key={i}
-                className={`project-card reveal reveal-delay-${(i % 3) + 1} ${isExpanded ? 'project-card-expanded' : ''}`}
-              >
-                <div className="project-card-top" aria-hidden="true" />
-                <div className="project-card-header">
-                  <div className="project-emoji">{project.emoji}</div>
-                  <div className="project-header-info">
-                    <h3 className="project-title">{project.title}</h3>
-                    <span className="project-duration">
-                      <i className="fas fa-calendar-alt" /> {project.duration}
-                    </span>
-                  </div>
+          {projects.map((project, i) => (
+            <div
+              key={i}
+              ref={el => { cardRefs.current[i] = el }}
+              className={`project-card reveal reveal-delay-${(i % 3) + 1}`}
+              onMouseEnter={() => setActiveTooltip(i)}
+              onMouseLeave={() => setActiveTooltip(null)}
+            >
+              <div className="project-card-top" aria-hidden="true" />
+              <div className="project-card-header">
+                <div className="project-emoji">{project.emoji}</div>
+                <div className="project-header-info">
+                  <h3 className="project-title">{project.title}</h3>
+                  <span className="project-duration">
+                    <i className="fas fa-calendar-alt" /> {project.duration}
+                  </span>
                 </div>
-                <p className="project-client">
-                  <i className="fas fa-building" /> {project.client}
-                </p>
-                <p className="project-desc">{project.description}</p>
-                <div className="project-tech">
-                  {(isExpanded ? project.tech : project.tech.slice(0, MAX_VISIBLE_TAGS)).map(t => (
-                    <span key={t} className="project-tech-tag">{t}</span>
-                  ))}
-                  {!isExpanded && project.tech.length > MAX_VISIBLE_TAGS && (
-                    <span className="project-tech-more">+{project.tech.length - MAX_VISIBLE_TAGS}</span>
-                  )}
-                </div>
+              </div>
+              <p className="project-client">
+                <i className="fas fa-building" /> {project.client}
+              </p>
+              <p className="project-desc">{project.description}</p>
+              <div className="project-tech">
+                {project.tech.slice(0, MAX_VISIBLE_TAGS).map(t => (
+                  <span key={t} className="project-tech-tag">{t}</span>
+                ))}
+                {project.tech.length > MAX_VISIBLE_TAGS && (
+                  <span className="project-tech-more">+{project.tech.length - MAX_VISIBLE_TAGS}</span>
+                )}
+              </div>
 
-                {isExpanded && (
-                  <div className="project-expanded-content">
+              <button
+                className="project-expand-btn"
+                onClick={() => setActiveTooltip(activeTooltip === i ? null : i)}
+                aria-expanded={activeTooltip === i}
+              >
+                <span>View Details</span>
+                <i className="fas fa-eye" />
+              </button>
+
+              {activeTooltip === i && (
+                <div ref={tooltipRef} className="project-tooltip">
+                  <div className="project-tooltip-inner">
+                    <div className="project-tooltip-header">
+                      <span className="project-tooltip-emoji">{project.emoji}</span>
+                      <h4>{project.title}</h4>
+                    </div>
                     {project.details && (
                       <div className="project-details-block">
-                        <h4><i className="fas fa-info-circle" /> Project Details</h4>
+                        <h5><i className="fas fa-info-circle" /> Project Details</h5>
                         <p>{project.details}</p>
                       </div>
                     )}
                     <div className="project-responsibilities">
-                      <h4><i className="fas fa-tasks" /> Key Responsibilities</h4>
+                      <h5><i className="fas fa-tasks" /> Key Responsibilities</h5>
                       <ul>
                         {project.responsibilities.map((r, idx) => (
                           <li key={idx}>{r}</li>
@@ -203,7 +241,7 @@ export default function Projects() {
                     </div>
                     {project.tech.length > MAX_VISIBLE_TAGS && (
                       <div className="project-full-tech">
-                        <h4><i className="fas fa-cogs" /> Full Tech Stack</h4>
+                        <h5><i className="fas fa-cogs" /> Full Tech Stack</h5>
                         <div className="project-tech">
                           {project.tech.map(t => (
                             <span key={t} className="project-tech-tag">{t}</span>
@@ -212,19 +250,10 @@ export default function Projects() {
                       </div>
                     )}
                   </div>
-                )}
-
-                <button
-                  className="project-expand-btn"
-                  onClick={() => toggleExpand(i)}
-                  aria-expanded={isExpanded}
-                >
-                  <span>{isExpanded ? 'Show Less' : 'View Details'}</span>
-                  <i className={`fas fa-chevron-${isExpanded ? 'up' : 'down'}`} />
-                </button>
-              </div>
-            )
-          })}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </section>

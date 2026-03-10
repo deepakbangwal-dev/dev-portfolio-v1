@@ -71,13 +71,14 @@
   object-fit: cover;
   object-position: top center;
   display: block;
-  /* Sketch / pencil-drawing artistic effect */
-  filter: grayscale(0.85) contrast(1.4) brightness(1.1);
+  /* Sharp, colorful crayon-style artistic effect */
+  filter: saturate(1.35) contrast(1.15) brightness(1.05);
   transition: filter 0.5s ease;
+  image-rendering: auto;
 }
 
 .portrait-canvas-effect:hover .portrait-img {
-  filter: grayscale(0.2) contrast(1.15) brightness(1.05) saturate(1.1);
+  filter: saturate(1.5) contrast(1.2) brightness(1.08);
 }
 
 .canvas-overlay {
@@ -87,42 +88,28 @@
   width: 100%;
   height: 100%;
   background:
-    /* Cross-hatch sketch texture */
+    /* Subtle colorful crayon-style texture */
     repeating-linear-gradient(
-      45deg,
+      120deg,
       transparent,
-      transparent 3px,
-      rgba(0,0,0,0.03) 3px,
-      rgba(0,0,0,0.03) 4px
+      transparent 8px,
+      rgba(99,102,241,0.015) 8px,
+      rgba(99,102,241,0.015) 9px
     ),
     repeating-linear-gradient(
-      -45deg,
+      60deg,
       transparent,
-      transparent 3px,
-      rgba(0,0,0,0.02) 3px,
-      rgba(0,0,0,0.02) 4px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.015) 2px,
-      rgba(0,0,0,0.015) 3px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.01) 2px,
-      rgba(0,0,0,0.01) 3px
+      transparent 8px,
+      rgba(236,72,153,0.01) 8px,
+      rgba(236,72,153,0.01) 9px
     );
-  mix-blend-mode: multiply;
+  mix-blend-mode: overlay;
   pointer-events: none;
   transition: opacity 0.5s ease;
 }
 
 .portrait-canvas-effect:hover .canvas-overlay {
-  opacity: 0.3;
+  opacity: 0.5;
 }
 
 /* Corner accents */

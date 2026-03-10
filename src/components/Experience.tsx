@@ -2,20 +2,20 @@ import './Experience.css'
 
 const experiences = [
   {
-    role: 'Senior Full-Stack Developer',
-    company: 'Tech Innovations Ltd.',
-    period: 'Jan 2023 – Present',
+    role: 'Associate Staff Engineer',
+    company: 'Nagarro, Gurugram',
+    period: 'Apr 2022 – Present',
     description:
-      'Led development of microservices-based web platform serving 50k+ users. Architected React frontends, Node.js APIs, and PostgreSQL data models. Improved page load performance by 40% through code-splitting and caching strategies.',
-    tech: ['React', 'Node.js', 'PostgreSQL', 'Docker'],
+      'Worked on optimizing the load of grid and EMI calculator modules. Contributed as an individual contributor on high-impact features, improving application performance and user experience across the platform.',
+    tech: ['Angular', 'Java', 'Spring Boot', 'Microservices', 'PostgreSQL', 'Docker', 'Kubernetes'],
   },
   {
-    role: 'Full-Stack Developer',
-    company: 'Digital Solutions Inc.',
-    period: 'Jun 2021 – Dec 2022',
+    role: 'Senior Software Developer',
+    company: 'Velocis Systems Pvt. Ltd, A-25, Sector-67, Noida (UP)',
+    period: 'Oct 2016 – Mar 2022',
     description:
-      'Built and maintained multiple client-facing web applications from scratch. Collaborated in an agile team of 8 engineers. Integrated third-party payment gateways and authentication systems.',
-    tech: ['Vue.js', 'Express', 'MongoDB', 'AWS'],
+      'Worked on projects from scratch while understanding design, query optimization, and security. Served as an individual contributor for complicated projects involving reading and processing building plans, delivering end-to-end solutions.',
+    tech: ['Java', 'J2EE', 'Spring MVC', 'Hibernate', 'PostgreSQL', 'jQuery', 'Jenkins'],
   },
 ]
 
