@@ -7,10 +7,10 @@ const highlights = [
 ]
 
 const techStack = [
-  'Python', 'Node.js', 'Java', 'REST APIs', 'GraphQL',
-  'PostgreSQL', 'MongoDB', 'Redis', 'Docker', 'AWS',
-  'TensorFlow', 'PyTorch', 'LangChain', 'OpenAI',
-  'Git', 'CI/CD', 'Linux', 'Kubernetes',
+  'Java', 'Python', 'Spring Boot', 'Hibernate', 'JPA',
+  'Apache Kafka', 'RabbitMQ', 'Redis', 'PostgreSQL',
+  'Docker', 'Kubernetes', 'OpenShift', 'Microservices',
+  'Git', 'Jenkins', 'JUnit', 'Design Patterns',
 ]
 
 export default function AboutMe() {
