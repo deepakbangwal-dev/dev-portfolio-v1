@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import './Projects.css'
 
+const MAX_VISIBLE_TAGS = 5
+
 const projects = [
   {
     title: 'Recovery Audit Workbench',
@@ -175,11 +177,11 @@ export default function Projects() {
                 </p>
                 <p className="project-desc">{project.description}</p>
                 <div className="project-tech">
-                  {(isExpanded ? project.tech : project.tech.slice(0, 5)).map(t => (
+                  {(isExpanded ? project.tech : project.tech.slice(0, MAX_VISIBLE_TAGS)).map(t => (
                     <span key={t} className="project-tech-tag">{t}</span>
                   ))}
-                  {!isExpanded && project.tech.length > 5 && (
-                    <span className="project-tech-more">+{project.tech.length - 5}</span>
+                  {!isExpanded && project.tech.length > MAX_VISIBLE_TAGS && (
+                    <span className="project-tech-more">+{project.tech.length - MAX_VISIBLE_TAGS}</span>
                   )}
                 </div>
 
@@ -199,7 +201,7 @@ export default function Projects() {
                         ))}
                       </ul>
                     </div>
-                    {project.tech.length > 5 && (
+                    {project.tech.length > MAX_VISIBLE_TAGS && (
                       <div className="project-full-tech">
                         <h4><i className="fas fa-cogs" /> Full Tech Stack</h4>
                         <div className="project-tech">
