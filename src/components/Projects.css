@@ -188,7 +188,7 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   animation: tooltipFadeIn 0.15s ease-out;
-  max-height: 500px;
+  max-height: 70vh;
   overflow-y: auto;
 }
 

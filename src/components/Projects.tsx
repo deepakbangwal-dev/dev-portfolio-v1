@@ -185,6 +185,12 @@ export default function Projects() {
               className={`project-card reveal reveal-delay-${(i % 3) + 1}`}
               onMouseEnter={() => setActiveTooltip(i)}
               onMouseLeave={() => setActiveTooltip(null)}
+              onFocus={() => setActiveTooltip(i)}
+              onBlur={(e) => {
+                if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+                  setActiveTooltip(null)
+                }
+              }}
             >
               <div className="project-card-top" aria-hidden="true" />
               <div className="project-card-header">
