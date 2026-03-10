@@ -84,7 +84,7 @@ export default function About() {
           <span>Deepak</span> Bangwal
         </h1>
         <h2 className="hero-designation">
-          Backend Developer <span className="hero-divider">|</span> AI Engineer
+          Building Scalable Systems that Power Business <span className="hero-divider">|</span> Backend Architecture <span className="hero-divider">|</span> Intelligent &amp; AI-Driven Platforms
         </h2>
 
         <div className="hero-scroll-hint" aria-hidden="true">
