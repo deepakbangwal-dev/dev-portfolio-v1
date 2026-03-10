@@ -21,6 +21,7 @@ export default function AboutMe() {
         <div className="aboutme-portrait slide-in-left">
           <div className="portrait-frame">
             <div className="portrait-canvas-effect">
+              {/* To use a local image, save your photo to the public/ folder and update the src below */}
               <img
                 src="https://github.com/user-attachments/assets/577c1075-b973-480b-80bb-6134f6579831"
                 alt="Deepak Bangwal"
