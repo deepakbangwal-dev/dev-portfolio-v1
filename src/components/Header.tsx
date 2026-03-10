@@ -7,6 +7,7 @@ interface Props {
 }
 
 const navLinks = [
+  { href: '#home', label: 'Home' },
   { href: '#about', label: 'About' },
   { href: '#skills', label: 'Skills' },
   { href: '#experience', label: 'Experience' },
@@ -27,7 +28,7 @@ export default function Header({ theme, toggleTheme }: Props) {
   return (
     <header className={`site-header${scrolled ? ' scrolled' : ''}`}>
       <div className="header-inner">
-        <a href="#about" className="logo">
+        <a href="#home" className="logo">
           <span className="logo-bracket">&lt;</span>DB<span className="logo-bracket">/&gt;</span>
         </a>
         <nav className={`nav${menuOpen ? ' open' : ''}`} aria-label="Main navigation">
