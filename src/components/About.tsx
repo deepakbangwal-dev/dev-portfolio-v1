@@ -81,11 +81,20 @@ export default function About() {
 
       <div className="container hero-center">
         <h1 className="hero-name">
-          <span>Deepak</span> Bangwal
+          Hi, I'm <span>Deepak</span> Bangwal
         </h1>
         <h2 className="hero-designation">
           Building Scalable Systems that Power Business <span className="hero-divider">|</span> Backend Architecture <span className="hero-divider">|</span> Intelligent &amp; AI-Driven Platforms
         </h2>
+
+        <div className="hero-cta-group">
+          <a href="#contact" className="btn btn-primary">
+            <i className="fas fa-envelope" /> Get In Touch
+          </a>
+          <a href="#projects" className="btn btn-outline">
+            <i className="fas fa-briefcase" /> View My Work
+          </a>
+        </div>
 
         <div className="hero-scroll-hint" aria-hidden="true">
           <span>Scroll to explore</span>

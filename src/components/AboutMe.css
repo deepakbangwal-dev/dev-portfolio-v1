@@ -41,26 +41,35 @@
 .aboutme-portrait {
   flex: 0 0 auto;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .portrait-frame {
   position: relative;
-  width: 340px;
-  height: 420px;
-  border-radius: 20px;
-  padding: 6px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  padding: 5px;
   background: var(--gradient);
   box-shadow:
-    0 20px 50px rgba(99,102,241,0.25),
+    0 0 30px rgba(99,102,241,0.35),
+    0 0 60px rgba(139,92,246,0.15),
     0 0 0 1px rgba(99,102,241,0.1);
+  animation: pulseGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 30px rgba(99,102,241,0.35), 0 0 60px rgba(139,92,246,0.15); }
+  100% { box-shadow: 0 0 40px rgba(99,102,241,0.5), 0 0 80px rgba(236,72,153,0.2); }
 }
 
 .portrait-canvas-effect {
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 16px;
+  border-radius: 50%;
   overflow: hidden;
   background: var(--bg);
 }
@@ -71,14 +80,14 @@
   object-fit: cover;
   object-position: top center;
   display: block;
-  /* Sharp, colorful crayon-style artistic effect */
   filter: saturate(1.35) contrast(1.15) brightness(1.05);
-  transition: filter 0.5s ease;
+  transition: filter 0.5s ease, transform 0.5s ease;
   image-rendering: auto;
 }
 
 .portrait-canvas-effect:hover .portrait-img {
   filter: saturate(1.5) contrast(1.2) brightness(1.08);
+  transform: scale(1.05);
 }
 
 .canvas-overlay {
@@ -87,8 +96,8 @@
   left: 0;
   width: 100%;
   height: 100%;
+  border-radius: 50%;
   background:
-    /* Subtle colorful crayon-style texture */
     repeating-linear-gradient(
       120deg,
       transparent,
@@ -112,29 +121,57 @@
   opacity: 0.5;
 }
 
-/* Corner accents */
-.frame-accent {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border: 3px solid rgba(255,255,255,0.4);
-  pointer-events: none;
+/* ─── Portrait name & title ─── */
+.portrait-name {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text);
+  text-align: center;
+  margin-top: 0.5rem;
+  font-family: 'Space Grotesk', 'Poppins', system-ui, sans-serif;
 }
 
-.frame-accent-tl {
-  top: -8px;
-  left: -8px;
-  border-right: none;
-  border-bottom: none;
-  border-radius: 4px 0 0 0;
+.portrait-title {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 280px;
+  line-height: 1.5;
+  font-weight: 500;
 }
 
-.frame-accent-br {
-  bottom: -8px;
-  right: -8px;
-  border-left: none;
-  border-top: none;
-  border-radius: 0 0 4px 0;
+/* ─── Social icons ─── */
+.portrait-social-links {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.portrait-social-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+.portrait-social-icon:hover {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(99,102,241,0.3);
+}
+
+.portrait-resume-icon:hover {
+  background: linear-gradient(135deg, #6366f1, #ec4899);
+  border-color: transparent;
 }
 
 /* ─── Content ─── */
@@ -250,8 +287,8 @@
   }
 
   .portrait-frame {
-    width: 280px;
-    height: 350px;
+    width: 220px;
+    height: 220px;
   }
 
   .aboutme-bio {
@@ -279,7 +316,7 @@
   }
 
   .portrait-frame {
-    width: 240px;
-    height: 300px;
+    width: 180px;
+    height: 180px;
   }
 }
