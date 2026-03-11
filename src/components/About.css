@@ -81,7 +81,7 @@
   font-size: clamp(1.1rem, 3vw, 1.65rem);
   font-weight: 500;
   color: var(--text-secondary);
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   animation: fadeUp 0.7s 0.15s ease both;
   letter-spacing: 0.04em;
 }
@@ -93,6 +93,14 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 700;
+}
+
+/* ─── Hero CTA buttons ─── */
+.hero-cta-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  animation: fadeUp 0.7s 0.25s ease both;
 }
 
 /* Scroll hint */
@@ -193,5 +201,9 @@
   }
   .hero-designation {
     font-size: clamp(1rem, 2.5vw, 1.3rem);
+  }
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: center;
   }
 }
